@@ -94,7 +94,7 @@ form h1 {
     display: flex;
  justify-content: flex-end;
     align-items: center;
-    margin-right: 10px;
+    
     margin-bottom: 5px;
   }
   
@@ -296,6 +296,7 @@ form button {
     background: rgba(0, 0, 0, 0.8); /* Darker background on hover */
 }
 
+
 .photo-preview {
     margin-top: 10px;
   }
@@ -307,19 +308,7 @@ form button {
     border-radius: 50%;
   }
   
-  .scrollable-container {
-    overflow-x: auto; /* Enable horizontal scrolling */
-    overflow-y: hidden; /* Hide vertical scroll if not needed */
-    white-space: nowrap; /* Prevent the form from wrapping */
-    width: 100%; /* Full width of its parent */
-  }
-  
-  /* Align the form to the right end of the container */
-  .scrollable-form {
-    display: inline-block; /* Allow horizontal alignment */
-    min-width: 100%; /* Ensure the form takes at least the full width */
-    text-align: right; /* Align content to the right */
-  }
+
 
 
 

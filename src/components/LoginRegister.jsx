@@ -75,7 +75,15 @@ const LoginRegister = () => {
         const userDocRef = doc(db, 'users', user.uid);
         await setDoc(userDocRef, { email, name: username, photoURL });
 
-        navigate('/welcome');
+        alert('Registration successful! Please log in.');
+        setUsername('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        setPhoto(null);
+        setPhotoPreview(null);
+
+        navigate('/login');
       } catch (error) {
         setErrorMessage(error.message);
         console.error('Registration error:', error.message);
@@ -83,6 +91,7 @@ const LoginRegister = () => {
     } else {
       try {
         await signInWithEmailAndPassword(auth, email, password);
+        alert('Login successful!');
         navigate('/welcome');
       } catch (error) {
         setErrorMessage(error.message);
@@ -93,6 +102,16 @@ const LoginRegister = () => {
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
   const toggleConfirmPasswordVisibility = () => setShowConfirmPassword(!showConfirmPassword);
+
+  const switchToRegister = () => {
+    setIsRegister(true);
+    setErrorMessage('');
+  };
+
+  const switchToLogin = () => {
+    setIsRegister(false);
+    setErrorMessage('');
+  };
 
   return (
     <div className={`wrapper ${isRegister ? 'active' : ''}`}>
@@ -126,23 +145,17 @@ const LoginRegister = () => {
           </div>
 
           <div className="remember-forgot">
-  <label>
-    <input type="checkbox" /> Remember me
-  </label>
-  <button
-    type="button"
-    className="forgot-password-link"
-    onClick={() => navigate('/forgot-password')}
-  >
-    Forgot Password?
-  </button>
-</div>
-
-
-
-       
-
-        
+            <label>
+              <input type="checkbox" /> Remember me
+            </label>
+            <button
+              type="button"
+              className="forgot-password-link"
+              onClick={() => navigate('/forgot-password')}
+            >
+              Forgot Password?
+            </button>
+          </div>
 
           <button type="submit">Login</button>
           <div className="register-link">
@@ -150,7 +163,7 @@ const LoginRegister = () => {
               <button 
                 type="button" 
                 className="white-text" 
-                onClick={() => setIsRegister(true)}>
+                onClick={switchToRegister}>
                   Sign Up
               </button>
             </p>
@@ -219,6 +232,8 @@ const LoginRegister = () => {
               <p className={passwordCriteria.specialChar ? 'valid white-text' : 'invalid white-text'}>At least one special character (e.g., !@#$%^&*)</p>
             </div>
           )}
+
+          
           <div className="upload-photo">
             <input
               type="file"
@@ -235,23 +250,17 @@ const LoginRegister = () => {
             </div>
             {photo && (
               <div className="photo-preview">
-                <img
-                  src={URL.createObjectURL(photo)}
-                  alt="Preview"
-                  className="preview-img"
-                />
-                <span className="remove-photo" onClick={() => setPhoto(null)}>×</span>
+                <img src={photoPreview} alt="Photo Preview" />
               </div>
             )}
           </div>
-
           <button type="submit">Sign Up</button>
           <div className="login-link">
             <p className="white-text">Already have an account? 
               <button 
                 type="button" 
                 className="black-text" 
-                onClick={() => setIsRegister(false)}>
+                onClick={switchToLogin}>
                   Login
               </button>
             </p>
@@ -263,6 +272,7 @@ const LoginRegister = () => {
 };
 
 export default LoginRegister;
+
 
 
 
