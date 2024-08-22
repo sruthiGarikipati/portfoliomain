@@ -11,9 +11,6 @@ import ForgotPassword from './components/ForgotPassword';
 import Welcome from './components/Welcome';
 import UpdatePassword from './components/UpdatePassword';
 
-
-
-
 function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
@@ -28,33 +25,27 @@ function App() {
 
   return (
     <Router>
-      <div className={`w-full h-full min-h-[100vh] ${darkMode ? 'dark' : ''}`}>
+      <div className={`w-full min-h-screen ${darkMode ? 'dark' : ''}`}>
         <Routes>
-          {/* Route for Login/Register */}
           <Route path="/login" element={<LoginRegister />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/welcome" element={<Welcome />} />
-          <Route path="/update-password" element={<UpdatePassword />}/>
-          
-         
-        
-          
-          
+          <Route path="/update-password" element={<UpdatePassword />} />
+
           <Route path="/" element={
-            <div className='w-full h-full min-h-[100vh]'>
-              <div className='dark:bg-gradient-to-tr from-[#0235a3] via-[#030a1c] to-[#05174e]'>
-                <Navbar 
-                  darkMode={darkMode}
-                  isOpen={isOpen}
-                  toggleMenu={toggleMenu}
-                  toggleTheme={toggleTheme}
-                />
-                <Header />
-              </div>
+            <div className={`w-full  ${darkMode ? 'dark:bg-gradient-to-tr from-[#0235a3] via-[#030a1c] to-[#05174e]' : 'bg-white'} min-h-screen`}>
+              <Navbar 
+                darkMode={darkMode}
+                isOpen={isOpen}
+                toggleMenu={toggleMenu}
+                toggleTheme={toggleTheme}
+              />
+              <Header />
             </div>
           }/>
+
           <Route path="/about" element={
-            <>
+            <div className={`${darkMode ? 'dark:bg-gradient-to-tr from-[#0235a3] via-[#030a1c] to-[#05174e]' : 'bg-white'} min-h-screen`}>
               <Navbar 
                 darkMode={darkMode}
                 isOpen={isOpen}
@@ -62,10 +53,11 @@ function App() {
                 toggleTheme={toggleTheme}
               />
               <About />
-            </>
+            </div>
           } />
+
           <Route path="/skills" element={
-            <>
+            <div className={`${darkMode ? 'dark:bg-gradient-to-tr from-[#0235a3] via-[#030a1c] to-[#05174e]' : 'bg-white'} min-h-screen`}>
               <Navbar 
                 darkMode={darkMode}
                 isOpen={isOpen}
@@ -73,10 +65,11 @@ function App() {
                 toggleTheme={toggleTheme}
               />
               <Skills />
-            </>
+            </div>
           } />
+
           <Route path="/experience" element={
-            <>
+            <div className={`${darkMode ? 'dark:bg-gradient-to-tr from-[#0235a3] via-[#030a1c] to-[#05174e]' : 'bg-white'} min-h-screen`}>
               <Navbar 
                 darkMode={darkMode}
                 isOpen={isOpen}
@@ -84,10 +77,11 @@ function App() {
                 toggleTheme={toggleTheme}
               />
               <Experience />
-            </>
+            </div>
           } />
+
           <Route path="/projects" element={
-            <>
+            <div className={`${darkMode ? 'dark:bg-gradient-to-tr from-[#0235a3] via-[#030a1c] to-[#05174e]' : 'bg-white'} min-h-screen`}>
               <Navbar 
                 darkMode={darkMode}
                 isOpen={isOpen}
@@ -95,7 +89,7 @@ function App() {
                 toggleTheme={toggleTheme}
               />
               <Projects />
-            </>
+            </div>
           } />
         </Routes>
       </div>
@@ -104,8 +98,6 @@ function App() {
 }
 
 export default App;
-
-
 
 
 

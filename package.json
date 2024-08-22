@@ -1,6 +1,5 @@
 {
-  "homepage": "https://github.com/sruthiGarikipati/portfolio.git",
-  "name": "portfolio",
+"name": "portfolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
